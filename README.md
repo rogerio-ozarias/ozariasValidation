@@ -10,6 +10,6 @@ Valida campos obrigatórios, expressões regulares, e também é possivel criar 
 
 
 
-Documentação no link https://rogerio-ozarias.github.io/ozariasValidation
+Documentação no link https://rogerio-ozarias.github.io/
 
 
