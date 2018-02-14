@@ -228,6 +228,7 @@ $.ozariasValidationField = function($this, settings){
             confirm:function(obj, labelName, value, confirm){
 
                 var name = $(obj).attr("name");
+                var parentForm = $(obj).closest("form");
                 var labelName = ($(obj).data("labelname")) ? $(obj).data("labelname") : ($(obj).attr("name"));
                 var msg = "";
                 if(typeof config.configDefault.confirm != "undefined")
@@ -239,8 +240,8 @@ $.ozariasValidationField = function($this, settings){
                         if(typeof config.configFields[name].confirm.msg != "undefined")
                             msg = config.configFields[name].confirm.msg;  
                 
-                if($("#"+confirm).length > 0 ){
-                    valueConfirm = $("#"+confirm).val();
+                if($(parentForm).find("#"+confirm).length > 0 ){
+                    valueConfirm = $(parentForm).find("#"+confirm).val();
                     
                     if(value != valueConfirm){
                         msg = msg.replace("##CONFIRM##", confirm);
