@@ -79,7 +79,11 @@ $.fn.ozariasValidation = function(settings){
         validateForm:function(){
             var name = "";
             config.arrError=[];            
-            $(this).removeClass("ozariasValidationErrorInput");
+            
+            // remove a classe error
+            $(parentElement).find(".ozariasValidationErrorInput")
+                .removeClass("ozariasValidationErrorInput");
+
             $(parentElement).find("[class*='validate[']").each(function(){                
                 if(!$(this).prop("disabled")){
                     if(name != $(this).attr("name")){
