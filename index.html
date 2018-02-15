@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>jQuery OzariasValidator.js V1.0</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,15 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <script src="js/ozariasValidation-1.0.js"></script>  
-
+  <body>   
 
     <header>
       <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -66,16 +58,12 @@
     <main>
       <section>
         <div class="container">
-          <div class="row">            
-            <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-              <img src="https://avatars0.githubusercontent.com/u/15777706?s=400&amp;u=86a1f6050513840c440dfbadd8684d677bdd7ed0&amp;v=3" width="230" height="230">      
-            </div>
+          <div class="row">                        
 
-            <div class="col-md-9 col-sm-6 col-xs-12">
+            <div class="col-md-12">
                               
                 <div id="ozariasValidator">
-                  <h1>jQuery.ozariasValidation v1.0</h1>
-                  
+                  <h1>jQuery.ozariasValidation v1.0</h1>                  
                   <p>Atende qualquer tipo de validação de formulário.</p>
                   <p>Simples e prático, pra validar qualquer campo do formulário.</p>
                   <p>Valida campos obrigatórios, expressões regulares, e também é possivel criar funções personalizadas.</p>
@@ -104,19 +92,126 @@
                     </code>
                   </div>
     
-                  <h3>Para fazer o download do exemplo abaixo <a href="https://github.com/rogerio-ozarias/ozariasValidation">clique aqui</a>.</h3>
-        
+                  <h3>Para fazer o download do exemplo abaixo <a href="https://github.com/rogerio-ozarias/ozariasValidation">clique aqui</a>.</h3>      
+
+                  
+                 
 
 
 
+                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="js/bootstrap.min.js"></script>
+
+                  <script src="js/ozariasValidation-1.0.js"></script>  
+                  
                   <script type="text/javascript">
-                    $(document).ready(function(){
+                    $(document).ready(function(){                      
                       // event de submit
-                      $("#formValidator").submit(function(e){         
-                       // Cancela o evento
-                        e.preventDefault();          
-                        // configuração do validator. Não é obrigatório
-                        var configValidation = {
+                      $("#exmplo1 button").click(function(){                                 
+                        if ($("#validatorExemplo1").ozariasValidation().validateForm()) {                                                    
+                           alert("Validou");
+                        }
+                      })
+                    })
+                  </script>
+                  <form method="post" style="margin: 50px 0" id="exmplo1">  
+                    <h4>Validação Basica</h4>  
+                    <p>
+                      <span class="label label-default">code</span><br />
+                      <img width="800" src="img/exemple1.PNG" />
+                    </p>
+                    <div id="validatorExemplo1">
+                      
+                      <div class="form-group has-feedback">
+                        <label>Nome <span class="label label-danger">required</span></label>
+                        <input data-labelname="Nome" id="nome" name="nome" class="form-control validate[required]" placeholder="Seu nome" type="text">                        
+                      </div>
+
+                      <div class="form-group has-feedback">
+                        <label for="">Email <span class="label label-danger">required regex</span></label>
+                        <input data-labelname="Email" type="text" id="email" name="email" class="form-control validate[required, regex[email]]" placeholder="email" >
+                      </div>
+                    </div>
+                    <button type="button" class="btn brn-default">Validar</button>
+                  </form> 
+
+
+
+
+
+
+
+
+
+                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="js/bootstrap.min.js"></script>
+
+                  <script src="js/ozariasValidation-1.0.js"></script>  
+                  
+                  <script type="text/javascript">
+                    $(document).ready(function(){                      
+                      // event de submit
+                      $("#exmplo2 button").click(function(){                                 
+                        config = {
+                          language:"pt-br",
+                          divErrorPosition:"prepend" 
+                        }
+                        if ($("#validatorExemplo2").ozariasValidation(config).validateForm()) {                                                    
+                           alert("Validou");
+                        }
+                      })
+                    })
+                  </script>
+                  <form method="post" style="margin: 50px 0" id="exmplo2">  
+                    <h4>Validação Basica - Mensagem em pf-br no topo</h4>  
+                    <p>
+                      <span class="label label-default">code</span><br />
+                      <img width="800" src="img/exemple1.PNG" />
+                    </p>
+                    <div id="validatorExemplo2">
+                      
+                      <div class="form-group has-feedback">
+                        <label>Nome <span class="label label-danger">required</span></label>
+                        <input data-labelname="Nome" id="nome" name="nome" class="form-control validate[required]" placeholder="Seu nome" type="text">                        
+                      </div>
+
+                      <div class="form-group has-feedback">
+                        <label for="">Email <span class="label label-danger">required regex</span></label>
+                        <input data-labelname="Email" type="text" id="email" name="email" class="form-control validate[required, regex[email]]" placeholder="email" >
+                      </div>
+                    </div>
+                    <button type="button" class="btn brn-default">Validar</button>
+                  </form> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                  <!-- Include all compiled plugins (below), or include individual files as needed -->
+                  <script src="js/bootstrap.min.js"></script>
+
+                  <script src="js/ozariasValidation-1.0.js"></script>  
+                  
+                  <script type="text/javascript">
+                    $(document).ready(function(){                      
+                      // event de submit
+                      $("#exmplo3 button").click(function(){                                 
+                        config = {
                           language:"pt-br",
                           divErrorPosition:"prepend",   
                           divErrorContent:$("<div class=\"alert alert-danger\" role=\"alert\"></div>"),
@@ -134,13 +229,12 @@
                                   $(formGroup).addClass("has-success"); 
                               }                              
                           }
-                        };
-                        var validaForm = $(this).find("#validator").ozariasValidation(configValidation);
-                        if(validaForm.validateForm()){                         
+                        }
+                        if ($("#validatorExemplo3").ozariasValidation(config).validateForm()) {                                                    
                            alert("Validou");
                         }
                       })
-                    })
+                    })                  
 
                     /**
                     * Função de exemplo pra validar CPF
@@ -182,9 +276,13 @@
                         return true;  
                     }
                   </script>
-                  <form method="post" style="margin: 50px 0" id="formValidator">  
+                  <form method="post" style="margin: 50px 0" id="exmplo3">  
                     <h4>Validação com formatação bootstrap</h4>  
-                    <div id="validator">
+                    <p>
+                      <span class="label label-default">code</span><br />
+                      <img width="800" src="img/exemple3.PNG" />
+                    </p>
+                    <div id="validatorExemplo3">
                       <div class="form-group has-feedback">
                         <label>Nome <span class="label label-danger">required</span></label>
                         <input data-labelname="Nome" id="nome" name="nome" aria-describedby="inputSuccess2Status" class="form-control validate[required]" placeholder="Seu nome" type="text">                        
@@ -226,51 +324,11 @@
                       </div>
                     </div>     
 
-                    <button type="submit" class="btn brn-default">Validar</button>
+                    <button type="button" class="btn brn-default">Validar</button>
                   </form>   
 
 
-
-
-
-
                   
-                  <script type="text/javascript">
-                    $(document).ready(function(){
-                      // event de submit
-                      $("#formValidator2").submit(function(e){         
-                       // Cancela o evento
-                        e.preventDefault();          
-                        
-                        var validaForm = $(this).find("#validator2").ozariasValidation({language:"pt-br"});
-                        if(validaForm.validateForm()){                         
-                           alert("Validou");
-                        }
-                      })
-                    })
-                  </script>
-                  <form method="post" style="margin: 50px 0" id="formValidator2">  
-                    <h4>Validação sem formatação bootstrap</h4>  
-                    <div id="validator2">
-                      <div class="form-group">
-                        <label>Nome <span class="label label-danger">required</span></label>
-                        <input data-labelname="Nome" id="nome" name="nome" aria-describedby="inputSuccess2Status" class="form-control validate[required]" placeholder="Seu nome" type="text">                        
-                      </div>
-
-                      <div class="form-group">
-                        <label for="">Email <span class="label label-danger">required regex</span></label>
-                        <input data-labelname="Email" type="text" id="email" name="email" class="form-control validate[required, regex[email]]" placeholder="email" >
-                      </div>
-
-                      <div class="form-group">
-                        <label for="">Confirmação de Email <span class="label label-danger">confirmation</span></label>
-                        <input data-labelname="Confirmação de Email" type="text" id="cmeial" name="cemail" class="form-control validate[confirm[email]]" placeholder="confirmação do email" >
-                      </div>                  
-                      
-                    </div>     
-
-                    <button type="submit" class="btn brn-default">Validar</button>
-                  </form>                  
                 </div>
             </div>
           </div>
