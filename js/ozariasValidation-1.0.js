@@ -12,8 +12,7 @@
 $.fn.ozariasValidation = function(settings){   
     var parentElement = $(this); 
     var config = {
-        language: 'en',        
-        msgError: "teste",
+        language: 'en',                
         arrError:[], 
         divErrorFocus: true,
         divErrorPosition:"append",// or prepend default:append
@@ -47,15 +46,18 @@ $.fn.ozariasValidation = function(settings){
                             .attr("id", config.divErrorContentId)
                             .appendTo(parentElement);
                 }  
-            }  
-            if(config.divErrorFocus){
-                var destination = $(errorContent).offset().top;
-                $("html:not(:animated),body:not(:animated)").animate({
-                    scrollTop: destination-100
-                }, 1100);      
-            } 
-
-            $(parentElement).find(".ozariasValidationErrorInput:eq(0)").focus();
+            
+                if(config.divErrorFocus){
+                    var destination = $(errorContent).offset().top;
+                    $("html:not(:animated),body:not(:animated)").animate({
+                        scrollTop: destination-100
+                    }, 1100);      
+                } 
+                $(parentElement).find(".ozariasValidationErrorInput:eq(0)").focus();
+                
+                return false;
+            }
+            return true;            
         },
         validateField:function($this){            
             var validate = true;
@@ -66,8 +68,7 @@ $.fn.ozariasValidation = function(settings){
 
             // salva as mensagens de erro em um array
             if(msgErrorField.length > 0){                                     
-                for(var i=0; i<msgErrorField.length; i++){
-                    config.msgError+=msgErrorField[i]+'\n';                    
+                for(var i=0; i<msgErrorField.length; i++){                                   
                     if(msgErrorField[i]){
                         config.arrError[config.arrError.length] = msgErrorField[i];                        
                     }                    
@@ -96,13 +97,7 @@ $.fn.ozariasValidation = function(settings){
             });   
 
             // chama função ao validar formulario
-            config.completeValidateForm(parentElement, config.arrError); 
-
-            if(config.msgError){                                              
-                config.msgError = "";
-                return false;
-            }
-            return true;            
+            return config.completeValidateForm(parentElement, config.arrError);             
         }
     }   
 
